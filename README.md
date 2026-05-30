@@ -340,14 +340,14 @@ Cada execução cria um diretório `runs/run-YYYY-MM-DDTHH-MM-SS/` contendo:
 O desenvolvimento é incremental, com cada etapa entregando algo verificável:
 
 - [x] **Etapa 1** — Setup do projeto + smoke test contra a API
-- [ ] **Etapa 2** — Logger e estrutura de runs
-- [ ] **Etapa 3** — Schemas zod e protocolo de mensagens
-- [ ] **Etapa 4** — LLM client robusto (retry, parsing tolerante)
-- [ ] **Etapa 5** — Classe Agent + persona da PM
-- [ ] **Etapa 6** — Blackboard
-- [ ] **Etapa 7** — Orquestrador mínimo (PLANNING com 2 agentes)
-- [ ] **Etapa 8** — Equipe completa em PLANNING
-- [ ] **Etapa 9** — Fases EXECUTION, REVIEW, RETRO
+- [x] **Etapa 2** — Logger e estrutura de runs
+- [x] **Etapa 3** — Schemas zod e protocolo de mensagens
+- [x] **Etapa 4** — LLM client robusto (retry, parsing tolerante)
+- [x] **Etapa 5** — Classe Agent + persona da PM
+- [x] **Etapa 6** — Blackboard
+- [x] **Etapa 7** — Orquestrador mínimo (PLANNING com 2 agentes)
+- [x] **Etapa 8** — Equipe completa em PLANNING
+- [x] **Etapa 9** — Fases EXECUTION, REVIEW, RETRO
 - [ ] **Etapa 10** — Carry-over e múltiplas sprints
 - [ ] **Etapa 11** — Summarizer
 - [ ] **Etapa 12** — Run completo de 4 sprints com métricas finais
