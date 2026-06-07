@@ -92,7 +92,7 @@ export const MessageSchema = z.object({
  * mensagem: um agente que não produz nada é uma falha de geração.
  */
 export const AgentResponseSchema = z.object({
-  thoughts: z.string().min(1).max(4000),
+  thoughts: z.string().min(1).max(6000),
   messages: z.array(MessageSchema).min(1).max(10),
 });
 

@@ -80,6 +80,12 @@ export class Orchestrator {
     let stopped             = null;
 
     while (!stopped) {
+      // ── Verificação antecipada: encerra REVIEW se não há tarefas IN_REVIEW ──
+      if (phaseName === 'REVIEW') {
+        const earlyStop = this._shouldStopPhase(phaseName, sprint);
+        if (earlyStop) { stopped = earlyStop; break; }
+      }
+
       // ── PM age (avança o contador canônico de turnos da fase) ─────────────
       pmTurns++;
       this.logger.nextTurn();
@@ -489,22 +495,10 @@ export class Orchestrator {
     }
 
     if (phaseName === 'REVIEW') {
-      const sprintTasks = this.blackboard.getBacklog().filter(
-        (t) => this._taskSprint.get(t.id) === sprint
+      const hasInReview = this.blackboard.getBacklog().some(
+        (t) => this._taskSprint.get(t.id) === sprint && t.status === 'IN_REVIEW'
       );
-
-      // Ainda há itens esperando revisão — continue.
-      const hasInReview = sprintTasks.some((t) => t.status === 'IN_REVIEW');
-      if (hasInReview) return null;
-
-      // Nenhum IN_REVIEW, mas uma tarefa pode ter sido rejeitada (IN_REVIEW → IN_PROGRESS)
-      // e ainda não foi resubmetida pelo dev. Aguardar o ciclo completar.
-      const hasPendingResubmission = sprintTasks.some((t) =>
-        t.status === 'IN_PROGRESS' &&
-        t.history.some((h) => h.from === 'IN_REVIEW' && h.to === 'IN_PROGRESS')
-      );
-
-      return hasPendingResubmission ? null : 'REVIEW_COMPLETE';
+      return hasInReview ? null : 'REVIEW_COMPLETE';
     }
 
     return null;

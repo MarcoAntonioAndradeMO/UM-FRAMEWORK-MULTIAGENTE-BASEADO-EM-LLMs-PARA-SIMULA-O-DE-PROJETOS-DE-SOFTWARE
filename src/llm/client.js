@@ -40,16 +40,18 @@ export class LLMClient {
   constructor({ mode, model, apiKey, logger, mockFixtures, maxCallsPerRun } = {}) {
     this.logger          = logger ?? null;
     this.model           = model  ?? process.env.ANTHROPIC_MODEL ?? 'claude-sonnet-4-6';
-    this.apiKey          = apiKey ?? process.env.ANTHROPIC_API_KEY ?? null;
     this.mockFixtures    = mockFixtures ?? DEFAULT_SEQUENCE;
     this._fixtureIndex   = 0;
     this.maxCallsPerRun  = maxCallsPerRun ?? null;
     this._totalCalls     = 0;
 
-    // Resolve o modo e instancia o SDK apenas se necessário
-    this.mode = this._resolveMode(mode);
+    // Resolve o modo e instancia o SDK apenas se necessário.
+    // A chave fica numa variável local e nunca é atribuída à instância,
+    // evitando exposição acidental via serialização ou logs do objeto.
+    const resolvedApiKey = apiKey ?? process.env.ANTHROPIC_API_KEY ?? null;
+    this.mode = this._resolveMode(mode, resolvedApiKey);
     if (this.mode === 'real') {
-      this._anthropic = new Anthropic({ apiKey: this.apiKey });
+      this._anthropic = new Anthropic({ apiKey: resolvedApiKey });
     }
   }
 
@@ -67,7 +69,7 @@ export class LLMClient {
    * @returns {Promise<string>} Texto bruto da resposta
    * @throws Em modo real: propaga erros do SDK para que completeStructured() faça retry
    */
-  async complete({ system, messages, temperature = 0.7, maxTokens = 1024 }) {
+  async complete({ system, messages, temperature = 0.7, maxTokens = 4096 }) {
     // Circuit breaker: aborta antes de consumir a chamada se o limite foi atingido.
     // O erro é propagado para completeStructured(), que registra LLM_RETRY e,
     // após esgotar tentativas, retorna { ok: false } ao Orchestrator.
@@ -204,12 +206,12 @@ export class LLMClient {
    * Se o modo "real" for solicitado sem apiKey, cai para mock com aviso.
    * @private
    */
-  _resolveMode(modeParam) {
+  _resolveMode(modeParam, apiKey) {
     const resolved = process.env.LLM_MODE
       ?? modeParam
-      ?? (this.apiKey ? 'real' : 'mock');
+      ?? (apiKey ? 'real' : 'mock');
 
-    if (resolved === 'real' && !this.apiKey) {
+    if (resolved === 'real' && !apiKey) {
       this.logger?.log('LLM_WARNING', {
         message: 'ANTHROPIC_API_KEY ausente — forçando modo mock automaticamente',
       });
