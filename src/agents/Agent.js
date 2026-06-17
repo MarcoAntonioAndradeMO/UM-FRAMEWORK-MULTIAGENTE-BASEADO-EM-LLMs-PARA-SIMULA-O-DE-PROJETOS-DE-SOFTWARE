@@ -111,10 +111,28 @@ export class Agent {
     }
 
     if (this.shortTermMemory.length > 0) {
-      const history = this.shortTermMemory
+      // Preserva todas as DECISIONs (escopo da sprint) + últimas MAX_NON_DECISION
+      // entradas restantes. Evita explosão de contexto nas sprints tardias sem perder
+      // decisões críticas que guiam o comportamento dos agentes.
+      const MAX_NON_DECISION = 12;
+      const totalNonDecision = this.shortTermMemory.filter((e) => e.type !== 'DECISION').length;
+      const cutCount = Math.max(0, totalNonDecision - MAX_NON_DECISION);
+      let nonDecisionSeen = 0;
+      const memoryView = cutCount > 0
+        ? this.shortTermMemory.filter((e) => {
+            if (e.type === 'DECISION') return true;
+            nonDecisionSeen++;
+            return nonDecisionSeen > cutCount;
+          })
+        : this.shortTermMemory;
+
+      const prefix = cutCount > 0
+        ? `(${cutCount} entrada(s) antiga(s) omitida(s) para reduzir contexto)\n`
+        : '';
+      const history = memoryView
         .map((e) => `- [${e.from}→${e.to ?? 'all'}] (${e.type}): ${e.content}`)
         .join('\n');
-      parts.push(`# Histórico desta fase\n${history}`);
+      parts.push(`# Histórico desta fase\n${prefix}${history}`);
     }
 
     parts.push(`# Situação atual\n${currentSituation}`);

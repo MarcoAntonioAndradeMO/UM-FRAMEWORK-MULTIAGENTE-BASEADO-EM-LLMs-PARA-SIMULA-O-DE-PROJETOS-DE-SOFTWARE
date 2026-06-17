@@ -398,6 +398,10 @@ export class Orchestrator {
       );
     }
 
+    lines.push(
+      '',
+      'IMPORTANTE: cada campo "content" nos objetos do array messages deve ter no máximo 2000 caracteres.'
+    );
     return lines.join('\n');
   }
 
