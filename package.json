@@ -14,12 +14,13 @@
     "agent:demo": "node scripts/agent-demo.js",
     "blackboard:demo": "node scripts/blackboard-demo.js",
     "orchestrator:demo": "node scripts/orchestrator-demo.js",
-    "simulation":        "node scripts/run-simulation.js",
-    "simulation:real":   "MODE=real node scripts/run-simulation.js"
+    "simulation": "node scripts/run-simulation.js",
+    "simulation:real": "MODE=real node scripts/run-simulation.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "dotenv": "^16.5.0",
+    "gpt-tokenizer": "^3.4.0",
     "zod": "^3.24.4"
   },
   "author": "Marco Antônio Andrade Mendes de Oliveira",

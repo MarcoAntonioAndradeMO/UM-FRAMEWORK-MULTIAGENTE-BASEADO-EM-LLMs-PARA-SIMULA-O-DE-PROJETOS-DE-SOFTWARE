@@ -44,6 +44,7 @@ export const MessageType = z.enum([
   'REQUEST_CLARIFICATION', // Qualquer → qualquer: pede esclarecimento
   'MEDIATE',               // PM → Dev/QA: intervém em conflito
   'DECISION',              // PM → todos: registra decisão tomada
+  'RESOLVE_BLOCKER',       // Qualquer → todos: fecha um impedimento aberto; refs = IDs dos blockers
   'CHAT',                  // Qualquer → qualquer: comunicação livre
 ]);
 
@@ -55,11 +56,12 @@ export const MessageType = z.enum([
  * um blocker ou progresso pode ser geral, sem tarefa específica.
  */
 const TYPES_REQUIRING_REFS = new Set([
-  'CLAIM_TASK',     // precisa indicar qual tarefa está sendo assumida
-  'REVIEW_REQUEST', // precisa indicar qual entrega está sendo submetida
-  'APPROVE',        // precisa indicar qual entrega foi aprovada
-  'REJECT',         // precisa indicar qual entrega foi rejeitada
-  'ESTIMATE',       // precisa indicar para qual tarefa é a estimativa
+  'CLAIM_TASK',      // precisa indicar qual tarefa está sendo assumida
+  'REVIEW_REQUEST',  // precisa indicar qual entrega está sendo submetida
+  'APPROVE',         // precisa indicar qual entrega foi aprovada
+  'REJECT',          // precisa indicar qual entrega foi rejeitada
+  'ESTIMATE',        // precisa indicar para qual tarefa é a estimativa
+  'RESOLVE_BLOCKER', // precisa indicar qual(is) blocker(s) está(ão) sendo fechado(s)
 ]);
 
 /**

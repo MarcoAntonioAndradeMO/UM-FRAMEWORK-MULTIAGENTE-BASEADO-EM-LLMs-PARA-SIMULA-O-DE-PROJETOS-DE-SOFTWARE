@@ -18,6 +18,17 @@
  * Status válidos de uma tarefa.
  * Congelado para evitar modificação acidental fora do módulo.
  */
+/**
+ * Pure function: recebe o array interno de blockers e retorna apenas os abertos.
+ * Um blocker está aberto quando nenhum agente chamou resolveBlocker() sobre ele,
+ * o que é representado por resolvedAt === null.
+ * @param {object[]} blockers - Array de entradas geradas por addBlocker()
+ * @returns {object[]}
+ */
+export function getOpenBlockers(blockers) {
+  return blockers.filter((b) => b.resolvedAt === null);
+}
+
 export const TaskStatus = Object.freeze({
   PLANNED:      'PLANNED',
   IN_PROGRESS:  'IN_PROGRESS',
@@ -122,7 +133,7 @@ export class Blackboard {
    * @returns {object[]}
    */
   getActiveBlockers() {
-    return this.blockers.filter((b) => !b.resolvedAt);
+    return getOpenBlockers(this.blockers);
   }
 
   /**
