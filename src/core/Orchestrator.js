@@ -50,7 +50,8 @@ export class Orchestrator {
    * Executa uma fase completa da simulação.
    *
    * Loop de turnos até uma das condições de parada:
-   *   (a) DECISION            — PM emitiu DECISION (apenas PLANNING)
+   *   (a) DECISION            — PM emitiu DECISION no turno ≥ 2 (apenas PLANNING;
+   *                             turno 1 é ignorado para garantir rodada de resposta dos devs)
    *   (b) NO_ACTIONABLE_TASKS — nenhuma tarefa da sprint é acionável (apenas EXECUTION)
    *   (c) REVIEW_COMPLETE     — nenhuma tarefa da sprint está em IN_REVIEW (apenas REVIEW)
    *   (d) MAX_TURNS           — número máximo de turnos da PM atingido
@@ -167,8 +168,10 @@ export class Orchestrator {
         }
       }
 
-      // Verificar condições de parada antes de passar a palavra
-      if (phaseName === 'PLANNING' && decisionEmitted) { stopped = 'DECISION'; break; }
+      // Verificar condições de parada antes de passar a palavra.
+      // PLANNING: só aceita DECISION como stop a partir do 2º turno da PM —
+      // garante ao menos uma rodada de resposta dos devs antes do fechamento.
+      if (phaseName === 'PLANNING' && decisionEmitted && pmTurns >= 2) { stopped = 'DECISION'; break; }
       const stopAfterPm = this._shouldStopPhase(phaseName, sprint);
       if (stopAfterPm)          { stopped = stopAfterPm; break; }
       if (pmTurns >= maxTurns)  { stopped = 'MAX_TURNS'; break; }
@@ -258,6 +261,31 @@ export class Orchestrator {
       return parts.join('\n');
     };
 
+    /**
+     * Injeta a seção de blockers abertos (visible a todos os agentes).
+     * Se existirem blockers na sprint, instrui explicitamente a emitir
+     * RESOLVE_BLOCKER antes de qualquer outra ação quando o impedimento
+     * já tiver sido superado.
+     */
+    const injectOpenBlockers = () => {
+      const sprintBlockers = this.blackboard.getActiveBlockers().filter(
+        (b) => b.taskId === null || this._taskSprint.get(b.taskId) === sprint
+      );
+      if (!sprintBlockers.length) return;
+      lines.push('', 'Blockers abertos nesta sprint:');
+      sprintBlockers.forEach((b) => {
+        const taskRef = b.taskId ? ` [tarefa: ${b.taskId}]` : '';
+        lines.push(`  ${b.id}${taskRef}: ${b.content}`);
+      });
+      lines.push(
+        '',
+        'INSTRUÇÃO — Se qualquer um desses impedimentos já foi superado, emita',
+        'RESOLVE_BLOCKER com refs: ["<ID_DO_BLOCKER>"] e explique a resolução em',
+        'content (inclua o taskId afetado e o motivo). Faça isso ANTES de qualquer',
+        'outra ação neste turno.'
+      );
+    };
+
     if (phaseName === 'PLANNING') {
       const toplan = sprintTasks.filter(
         (t) => t.status === 'PLANNED' || t.status === 'CARRIED_OVER'
@@ -268,6 +296,7 @@ export class Orchestrator {
       } else {
         lines.push('  (nenhuma tarefa a planejar nesta sprint)');
       }
+      injectOpenBlockers();
       lines.push(
         '',
         `Conduza o PLANNING da Sprint ${sprint}: apresente as tarefas à equipe,`,
@@ -322,6 +351,7 @@ export class Orchestrator {
         lines.push('', '  (nenhuma tarefa acionável ou em revisão nesta sprint)');
       }
 
+      injectOpenBlockers();
       lines.push(
         '',
         `Conduza a EXECUTION da Sprint ${sprint}.`,
@@ -341,6 +371,7 @@ export class Orchestrator {
       } else {
         lines.push('  (nenhuma tarefa em IN_REVIEW nesta sprint)');
       }
+      injectOpenBlockers();
       lines.push('', `Conduza a fase ${phaseName} da Sprint ${sprint}.`);
 
     } else {
@@ -359,6 +390,9 @@ export class Orchestrator {
         `  IN_REVIEW:    ${byStatus('IN_REVIEW')}`,
         `  DONE:         ${byStatus('DONE')}`,
         `  CARRIED_OVER: ${byStatus('CARRIED_OVER')}`,
+      );
+      injectOpenBlockers();
+      lines.push(
         '',
         `Conduza a fase ${phaseName} da Sprint ${sprint}.`
       );
@@ -443,6 +477,16 @@ export class Orchestrator {
           });
           break;
 
+        case 'RESOLVE_BLOCKER':
+          // Autoridade: qualquer agente pode fechar qualquer blocker (auto-organização ágil).
+          // refs contém os IDs dos blockers a fechar (ex: ["B1", "B2"]).
+          if (msg.refs?.length) {
+            for (const blockerId of msg.refs) {
+              this.blackboard.resolveBlocker(blockerId, byAgentId);
+            }
+          }
+          break;
+
         case 'ESTIMATE': {
           if (msg.refs?.length) {
             // Extrai primeiro número com unidade; fallback: número após ':'
@@ -498,10 +542,9 @@ export class Orchestrator {
    */
   _shouldStopPhase(phaseName, sprint) {
     if (phaseName === 'EXECUTION') {
+      const activeBlockers   = this.blackboard.getActiveBlockers();
       const activeBlockerIds = new Set(
-        this.blackboard.getActiveBlockers()
-          .filter((b) => b.taskId !== null)
-          .map((b)   => b.taskId)
+        activeBlockers.filter((b) => b.taskId !== null).map((b) => b.taskId)
       );
 
       const hasActionable = this.blackboard.getBacklog().some((t) =>
@@ -511,7 +554,15 @@ export class Orchestrator {
         !activeBlockerIds.has(t.id)
       );
 
-      return hasActionable ? null : 'NO_ACTIONABLE_TASKS';
+      if (hasActionable) return null;
+
+      // Não colapsa enquanto existirem blockers abertos na sprint —
+      // os agentes precisam de mais turnos para emitir RESOLVE_BLOCKER.
+      // MAX_TURNS ainda funciona como proteção final no loop de runPhase.
+      const hasSprintBlockers = activeBlockers.some(
+        (b) => b.taskId !== null && this._taskSprint.get(b.taskId) === sprint
+      );
+      return hasSprintBlockers ? null : 'NO_ACTIONABLE_TASKS';
     }
 
     if (phaseName === 'REVIEW') {

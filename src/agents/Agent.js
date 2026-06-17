@@ -7,6 +7,7 @@
  */
 
 import fs from 'node:fs';
+import { encode } from 'gpt-tokenizer';
 
 /**
  * Agente autônomo controlado por um LLM.
@@ -137,6 +138,34 @@ export class Agent {
    */
   async act(currentSituation) {
     const messages = this.buildContext(currentSituation);
+
+    // ── PROMPT_SIZE: diagnóstico de crescimento de contexto ──────────────────
+    // Registrado antes de cada chamada ao LLM para rastrear crescimento por sprint.
+    // tokens.* usa gpt-tokenizer (cl100k_base) — valores ~10% abaixo do tokenizer
+    // interno do Claude, mas proporcionais e suficientes para comparação entre turnos.
+    {
+      const userContent = messages[0]?.content ?? '';
+      const countTokens = (s) => encode(s).length;
+      this.logger?.log(
+        'PROMPT_SIZE',
+        {
+          situationHeader: currentSituation.split('\n')[0],
+          memoryEntries:   this.shortTermMemory.length,
+          chars: {
+            system:    this.systemPrompt.length,
+            situation: currentSituation.length,
+            userMsg:   userContent.length,
+            total:     this.systemPrompt.length + userContent.length,
+          },
+          tokens: {
+            system:  countTokens(this.systemPrompt),
+            userMsg: countTokens(userContent),
+            total:   countTokens(this.systemPrompt) + countTokens(userContent),
+          },
+        },
+        { actor: this.id }
+      );
+    }
 
     this.logger?.log(
       'AGENT_ACT',
