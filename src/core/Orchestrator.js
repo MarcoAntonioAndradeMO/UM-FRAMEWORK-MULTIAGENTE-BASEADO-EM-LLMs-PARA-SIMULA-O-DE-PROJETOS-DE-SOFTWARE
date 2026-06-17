@@ -78,6 +78,8 @@ export class Orchestrator {
     let pmTurns             = 0;
     let consecutiveFailures = 0;
     let stopped             = null;
+    const turnsPerDay = this.config.turnsPerDay ?? 3;
+    let   turnsSinceLastDay = 0;
 
     while (!stopped) {
       // ── Verificação antecipada: encerra REVIEW se não há tarefas IN_REVIEW ──
@@ -89,6 +91,24 @@ export class Orchestrator {
       // ── PM age (avança o contador canônico de turnos da fase) ─────────────
       pmTurns++;
       this.logger.nextTurn();
+
+      if (phaseName === 'EXECUTION') {
+        turnsSinceLastDay++;
+        if (turnsSinceLastDay >= turnsPerDay) {
+          turnsSinceLastDay = 0;
+          const timedOut = this.blackboard.advanceDay();
+          if (timedOut) {
+            const carriedOver = this.blackboard.timeoutSprint();
+            this.logger.log('SPRINT_TIMEOUT', {
+              sprint:       sprint,
+              simulatedDay: this.blackboard.simulatedDay,
+              carriedOver,
+            });
+            stopped = 'SPRINT_TIMEOUT';
+            break;
+          }
+        }
+      }
 
       const pm = this.agents.get('pm');
       if (!pm) {

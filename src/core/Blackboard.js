@@ -47,7 +47,7 @@ const VALID_TRANSITIONS = Object.freeze({
   [TaskStatus.IN_REVIEW]:    [TaskStatus.DONE, TaskStatus.IN_PROGRESS, TaskStatus.CARRIED_OVER],
   [TaskStatus.DONE]:         [],
   [TaskStatus.REJECTED]:     [TaskStatus.IN_PROGRESS],
-  [TaskStatus.CARRIED_OVER]: [TaskStatus.IN_PROGRESS],
+  [TaskStatus.CARRIED_OVER]: [TaskStatus.IN_PROGRESS, TaskStatus.PLANNED],
 });
 
 /**
@@ -65,6 +65,8 @@ export class Blackboard {
     this.decisions     = [];
     this.blockers      = [];
     this._blockerCount = 0;
+    this.simulatedDay       = 0;
+    this.sprintDurationDays = 0;
 
     // Tarefas indexadas por ID — O(1) para lookup
     this._tasks = new Map();
@@ -148,9 +150,16 @@ export class Blackboard {
     return {
       generatedAt:   new Date().toISOString(),
       currentSprint: this.currentSprint,
-      tasks:         this.getBacklog(),
-      decisions:     this.decisions,
-      blockers:      this.blockers,
+      sprintCalendar: {
+        simulatedDay:       this.simulatedDay,
+        sprintDurationDays: this.sprintDurationDays,
+        progressPct: this.sprintDurationDays > 0
+          ? Math.round((this.simulatedDay / this.sprintDurationDays) * 100)
+          : 0,
+      },
+      tasks:     this.getBacklog(),
+      decisions: this.decisions,
+      blockers:  this.blockers,
     };
   }
 
@@ -160,9 +169,17 @@ export class Blackboard {
    * Define a sprint atual. Deve ser chamado no início de cada sprint.
    * @param {number} n - Número da sprint
    */
-  startSprint(n) {
-    this.currentSprint = n;
-    this._log('BB_SPRINT_START', { sprint: n });
+  startSprint(n, sprintDurationDays = 10) {
+    this.currentSprint      = n;
+    this.simulatedDay       = 0;
+    this.sprintDurationDays = sprintDurationDays;
+    this._log('BB_SPRINT_START', { sprint: n, sprintDurationDays });
+
+    for (const task of this._tasks.values()) {
+      if (task.status === TaskStatus.CARRIED_OVER) {
+        this.setStatus(task.id, TaskStatus.PLANNED, 'system');
+      }
+    }
   }
 
   /**
@@ -314,6 +331,61 @@ export class Blackboard {
     blocker.resolvedAt = new Date().toISOString();
     blocker.resolvedBy = byAgentId;
     this._log('BB_BLOCKER_RESOLVED', { id: blockerId, resolvedBy: byAgentId }, byAgentId);
+  }
+
+  /**
+   * Avança o dia simulado em 1.
+   * Retorna true se o tempo da sprint foi esgotado.
+   */
+  advanceDay() {
+    this.simulatedDay += 1;
+    const timedOut = this.simulatedDay >= this.sprintDurationDays;
+    this._log('BB_DAY_ADVANCE', {
+      sprint: this.currentSprint,
+      simulatedDay: this.simulatedDay,
+      sprintDurationDays: this.sprintDurationDays,
+      timedOut,
+    });
+    return timedOut;
+  }
+
+  /**
+   * Chamado quando o tempo da sprint esgota durante EXECUTION.
+   * Tarefas IN_PROGRESS e PLANNED → CARRIED_OVER.
+   * Tarefas IN_REVIEW são preservadas para a fase REVIEW processar normalmente.
+   * Retorna os ids das tarefas que foram carried over pelo timeout.
+   */
+  timeoutSprint() {
+    const timedOut = [];
+    for (const task of this._tasks.values()) {
+      if (
+        task.status === TaskStatus.IN_PROGRESS ||
+        task.status === TaskStatus.PLANNED
+      ) {
+        const from  = task.status;
+        task.status = TaskStatus.CARRIED_OVER;
+        task.history.push({
+          sprint: this.currentSprint,
+          from,
+          to: TaskStatus.CARRIED_OVER,
+          by: 'system:timeout',
+          ts: new Date().toISOString(),
+        });
+        timedOut.push(task.id);
+        this._log('BB_STATUS_CHANGE', {
+          taskId: task.id,
+          from,
+          to: TaskStatus.CARRIED_OVER,
+          by: 'system:timeout',
+        });
+      }
+    }
+    this._log('BB_SPRINT_TIMEOUT', {
+      sprint:      this.currentSprint,
+      simulatedDay: this.simulatedDay,
+      timedOut,
+    });
+    return timedOut;
   }
 
   /**

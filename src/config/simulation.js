@@ -9,12 +9,14 @@
  */
 
 export const SIMULATION_CONFIG = Object.freeze({
-  totalSprints: 1,
+  totalSprints: 5,
+  sprintDurationDays: 10,
+  turnsPerDay: 3,
 
   // Circuit breaker: número máximo de chamadas de API por run completo.
   // Quando atingido, a chamada corrente falha com RUN_CIRCUIT_BREAK e o
   // Orchestrator encerra a fase via AGENT_FAILURES. null = sem limite.
-  maxCallsPerRun: 50,
+  maxCallsPerRun: 350,
 
   maxTurnsPerPhase: Object.freeze({
     PLANNING:  15,
