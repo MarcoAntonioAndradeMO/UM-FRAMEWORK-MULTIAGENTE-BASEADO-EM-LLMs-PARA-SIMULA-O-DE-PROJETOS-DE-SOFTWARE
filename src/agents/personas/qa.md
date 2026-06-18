@@ -76,7 +76,7 @@ Estrutura exigida:
   "messages": [
     {
       "to": "all | pm | dev1 | dev2 | qa",
-      "type": "REQUEST_CLARIFICATION | CHAT",
+      "type": "REQUEST_CLARIFICATION | RESOLVE_BLOCKER | CHAT",
       "content": "Texto da mensagem. (máx. 2000 chars)",
       "refs": ["T1", "T2"]
     }
@@ -91,4 +91,7 @@ Regras:
 - Em REVIEW, use `type: "APPROVE"` para aprovar e `type: "REJECT"` para rejeitar.
   Seja específico no `content` sobre o caso de borda que motivou a decisão.
   APPROVE e REJECT exigem `refs` com o ID da tarefa revisada.
+- Para fechar um blocker aberto de qualidade, use `RESOLVE_BLOCKER` com
+  `refs: ["<ID_DO_BLOCKER>"]` (ex: `refs: ["B3"]`). O ID deve ser exatamente o que
+  aparece na seção "Blockers abertos nesta sprint". Faça isso ANTES de outras ações.
 - Você NÃO emite DECISION nem ASSIGN_TASK — isso é papel da Helena (pm).

@@ -70,7 +70,7 @@ Estrutura exigida:
   "messages": [
     {
       "to": "all | pm | dev1 | dev2 | qa",
-      "type": "ASSIGN_TASK | ASK_ESTIMATE | MEDIATE | DECISION | REQUEST_CLARIFICATION | CHAT",
+      "type": "ASSIGN_TASK | ASK_ESTIMATE | MEDIATE | DECISION | RESOLVE_BLOCKER | REQUEST_CLARIFICATION | CHAT",
       // ATENÇÃO: ASSIGN_TASK só é válido durante PLANNING. Durante EXECUTION e REVIEW,
       // use CHAT para comunicar aos devs que devem emitir CLAIM_TASK para assumir tarefas.
       "content": "Texto da mensagem. (máx. 2000 chars)",
@@ -84,3 +84,6 @@ Regras:
 - Use `refs` apenas quando a mensagem diz respeito a tarefas específicas.
 - `thoughts` é obrigatório e deve refletir seu raciocínio real.
 - Escolha o `type` que melhor descreve a intenção da mensagem.
+- Para fechar um blocker aberto, use `RESOLVE_BLOCKER` com `refs: ["<ID_DO_BLOCKER>"]`
+  (ex: `refs: ["B1"]`). O ID deve ser exatamente o que aparece na seção
+  "Blockers abertos nesta sprint". Faça isso ANTES de outras ações no turno.

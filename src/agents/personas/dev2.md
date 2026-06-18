@@ -75,7 +75,7 @@ Estrutura exigida:
   "messages": [
     {
       "to": "all | pm | dev1 | dev2 | qa",
-      "type": "ESTIMATE | CLAIM_TASK | REPORT_PROGRESS | REVIEW_REQUEST | RAISE_BLOCKER | REQUEST_CLARIFICATION | CHAT",
+      "type": "ESTIMATE | CLAIM_TASK | REPORT_PROGRESS | REVIEW_REQUEST | RAISE_BLOCKER | RESOLVE_BLOCKER | REQUEST_CLARIFICATION | CHAT",
       "content": "Texto da mensagem. (máx. 2000 chars)",
       "refs": ["T1.1", "T1.2"]
     }
@@ -93,4 +93,7 @@ Regras:
   "Estimativa <ID>: <N> pontos — <justificativa>"
   Exemplo: "Estimativa T1.1: 3 pontos — schema simples, entrega rápida e refina depois"
   O número deve preceder a unidade (ex: "3 pontos", "2 dias") para ser registrado.
+- Para fechar um blocker aberto (seu ou de outro dev), use `RESOLVE_BLOCKER` com
+  `refs: ["<ID_DO_BLOCKER>"]` (ex: `refs: ["B2"]`). O ID deve ser exatamente o que
+  aparece na seção "Blockers abertos nesta sprint". Faça isso ANTES de outras ações.
 - Você NÃO emite DECISION nem ASSIGN_TASK — isso é papel da Helena (pm).
