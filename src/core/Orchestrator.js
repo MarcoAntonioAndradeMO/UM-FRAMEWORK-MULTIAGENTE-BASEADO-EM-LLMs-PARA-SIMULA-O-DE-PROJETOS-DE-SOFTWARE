@@ -184,7 +184,11 @@ export class Orchestrator {
         // logger.nextTurn() avança o contador de turno para cada ação individual
         this.logger.nextTurn();
 
-        const agentResult = await agent.act(situation);
+        // Reconstrói a situação para refletir mudanças de estado causadas pelo PM
+        // e por agentes não-PM que já agiram neste turno (evita conflitos de
+        // CLAIM_TASK em tarefas já assumidas no mesmo ciclo).
+        const agentSituation = this._buildSituation(phaseName, sprint, pmTurns);
+        const agentResult = await agent.act(agentSituation);
 
         if (!agentResult.ok) {
           // Falha suave: registrada no log, mas não interrompe a fase
