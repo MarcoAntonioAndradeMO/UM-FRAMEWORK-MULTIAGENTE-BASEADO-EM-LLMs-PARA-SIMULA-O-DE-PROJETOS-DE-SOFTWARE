@@ -1,0 +1,1252 @@
+{
+  "generatedAt": "2026-06-16T23:32:39.639Z",
+  "currentSprint": 4,
+  "sprintCalendar": {
+    "simulatedDay": 0,
+    "sprintDurationDays": 10,
+    "progressPct": 0
+  },
+  "tasks": [
+    {
+      "id": "T1.1",
+      "title": "Modelar schema de livros",
+      "dependsOn": [],
+      "note": "Fundação da Sprint 1 — nenhuma outra tarefa de cadastro pode começar antes disto.",
+      "status": "DONE",
+      "estimate": null,
+      "estimates": [],
+      "assignee": "dev1",
+      "sprintIntroduced": 1,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "IN_PROGRESS",
+          "by": "dev1",
+          "ts": "2026-06-16T23:02:03.526Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "by": "dev1",
+          "ts": "2026-06-16T23:03:25.882Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_REVIEW",
+          "to": "DONE",
+          "by": "qa",
+          "ts": "2026-06-16T23:04:06.523Z"
+        }
+      ]
+    },
+    {
+      "id": "T1.2",
+      "title": "CRUD de cadastro de livro",
+      "dependsOn": [
+        "T1.1"
+      ],
+      "note": null,
+      "status": "DONE",
+      "estimate": null,
+      "estimates": [],
+      "assignee": "dev1",
+      "sprintIntroduced": 1,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "IN_PROGRESS",
+          "by": "dev1",
+          "ts": "2026-06-16T23:04:50.748Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "by": "dev1",
+          "ts": "2026-06-16T23:06:24.579Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_REVIEW",
+          "to": "IN_PROGRESS",
+          "by": "qa",
+          "ts": "2026-06-16T23:07:26.454Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "by": "dev1",
+          "ts": "2026-06-16T23:08:21.857Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_REVIEW",
+          "to": "DONE",
+          "by": "qa",
+          "ts": "2026-06-16T23:09:07.770Z"
+        }
+      ]
+    },
+    {
+      "id": "T1.3",
+      "title": "Validação de entrada (ISBN único, campos obrigatórios)",
+      "dependsOn": [
+        "T1.2"
+      ],
+      "note": "Risco plantado: ISBN duplicado ou vazio deve ser rejeitado — caso de borda de qualidade.",
+      "status": "DONE",
+      "estimate": null,
+      "estimates": [],
+      "assignee": "dev2",
+      "sprintIntroduced": 1,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "IN_PROGRESS",
+          "by": "dev2",
+          "ts": "2026-06-16T23:11:01.752Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "by": "dev2",
+          "ts": "2026-06-16T23:12:47.969Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_REVIEW",
+          "to": "DONE",
+          "by": "qa",
+          "ts": "2026-06-16T23:13:15.104Z"
+        }
+      ]
+    },
+    {
+      "id": "T1.4",
+      "title": "Listagem de livros com paginação",
+      "dependsOn": [
+        "T1.1"
+      ],
+      "note": null,
+      "status": "DONE",
+      "estimate": null,
+      "estimates": [],
+      "assignee": "dev2",
+      "sprintIntroduced": 1,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "IN_PROGRESS",
+          "by": "dev2",
+          "ts": "2026-06-16T23:05:06.866Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "by": "dev2",
+          "ts": "2026-06-16T23:06:45.435Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_REVIEW",
+          "to": "DONE",
+          "by": "qa",
+          "ts": "2026-06-16T23:07:26.454Z"
+        }
+      ]
+    },
+    {
+      "id": "T2.1",
+      "title": "Cliente HTTP para API externa de metadados",
+      "dependsOn": [
+        "T1.1"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": "dev1",
+      "sprintIntroduced": 2,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.105Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.107Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "IN_PROGRESS",
+          "by": "dev1",
+          "ts": "2026-06-16T23:14:54.027Z"
+        },
+        {
+          "sprint": 2,
+          "from": "IN_PROGRESS",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.927Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.541Z"
+        },
+        {
+          "sprint": 4,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.543Z"
+        },
+        {
+          "sprint": 4,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:32:39.638Z"
+        }
+      ]
+    },
+    {
+      "id": "T2.2",
+      "title": "Preenchimento automático de metadados por ISBN",
+      "dependsOn": [
+        "T2.1"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.105Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.927Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.541Z"
+        },
+        {
+          "sprint": 4,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.544Z"
+        },
+        {
+          "sprint": 4,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:32:39.639Z"
+        }
+      ]
+    },
+    {
+      "id": "T2.3",
+      "title": "Tratamento de falha/timeout da API externa",
+      "dependsOn": [
+        "T2.1"
+      ],
+      "note": "Risco plantado: API de terceiros pode ficar instável ou indisponível — exige fallback definido.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.105Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.927Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.542Z"
+        },
+        {
+          "sprint": 4,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.544Z"
+        },
+        {
+          "sprint": 4,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:32:39.639Z"
+        }
+      ]
+    },
+    {
+      "id": "T2.4",
+      "title": "Cache local de metadados",
+      "dependsOn": [
+        "T2.2"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.105Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.927Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.542Z"
+        },
+        {
+          "sprint": 4,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.544Z"
+        },
+        {
+          "sprint": 4,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:32:39.639Z"
+        }
+      ]
+    },
+    {
+      "id": "T3.1",
+      "title": "Modelar entidade de empréstimo",
+      "dependsOn": [
+        "T1.2"
+      ],
+      "note": null,
+      "status": "DONE",
+      "estimate": null,
+      "estimates": [],
+      "assignee": "dev1",
+      "sprintIntroduced": 3,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.105Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.927Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "IN_PROGRESS",
+          "by": "dev1",
+          "ts": "2026-06-16T23:17:07.737Z"
+        },
+        {
+          "sprint": 3,
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "by": "dev1",
+          "ts": "2026-06-16T23:18:47.731Z"
+        },
+        {
+          "sprint": 3,
+          "from": "IN_REVIEW",
+          "to": "DONE",
+          "by": "qa",
+          "ts": "2026-06-16T23:19:36.776Z"
+        }
+      ]
+    },
+    {
+      "id": "T3.2",
+      "title": "Registrar empréstimo",
+      "dependsOn": [
+        "T3.1"
+      ],
+      "note": "Risco plantado: emprestar um livro já emprestado deve ser impedido — caso de borda.",
+      "status": "DONE",
+      "estimate": null,
+      "estimates": [],
+      "assignee": "dev2",
+      "sprintIntroduced": 3,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.105Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.927Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "IN_PROGRESS",
+          "by": "dev2",
+          "ts": "2026-06-16T23:21:10.678Z"
+        },
+        {
+          "sprint": 3,
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "by": "dev2",
+          "ts": "2026-06-16T23:22:48.285Z"
+        },
+        {
+          "sprint": 3,
+          "from": "IN_REVIEW",
+          "to": "IN_PROGRESS",
+          "by": "qa",
+          "ts": "2026-06-16T23:23:22.675Z"
+        },
+        {
+          "sprint": 3,
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "by": "dev2",
+          "ts": "2026-06-16T23:24:52.072Z"
+        },
+        {
+          "sprint": 3,
+          "from": "IN_REVIEW",
+          "to": "DONE",
+          "by": "qa",
+          "ts": "2026-06-16T23:25:12.141Z"
+        }
+      ]
+    },
+    {
+      "id": "T3.3",
+      "title": "Registrar devolução",
+      "dependsOn": [
+        "T3.2"
+      ],
+      "note": null,
+      "status": "DONE",
+      "estimate": null,
+      "estimates": [],
+      "assignee": "dev1",
+      "sprintIntroduced": 3,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.105Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.927Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "IN_PROGRESS",
+          "by": "dev1",
+          "ts": "2026-06-16T23:25:58.632Z"
+        },
+        {
+          "sprint": 3,
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "by": "dev1",
+          "ts": "2026-06-16T23:28:13.880Z"
+        },
+        {
+          "sprint": 3,
+          "from": "IN_REVIEW",
+          "to": "DONE",
+          "by": "qa",
+          "ts": "2026-06-16T23:29:40.540Z"
+        }
+      ]
+    },
+    {
+      "id": "T3.4",
+      "title": "Histórico de empréstimos por livro e por amigo",
+      "dependsOn": [
+        "T3.2"
+      ],
+      "note": null,
+      "status": "DONE",
+      "estimate": null,
+      "estimates": [],
+      "assignee": "dev2",
+      "sprintIntroduced": 3,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.106Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.927Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "IN_PROGRESS",
+          "by": "dev2",
+          "ts": "2026-06-16T23:26:16.600Z"
+        },
+        {
+          "sprint": 3,
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "by": "dev2",
+          "ts": "2026-06-16T23:29:07.263Z"
+        },
+        {
+          "sprint": 3,
+          "from": "IN_REVIEW",
+          "to": "DONE",
+          "by": "qa",
+          "ts": "2026-06-16T23:29:40.540Z"
+        }
+      ]
+    },
+    {
+      "id": "T4.1",
+      "title": "Definir critério de recomendação",
+      "dependsOn": [],
+      "note": "Risco plantado: critério de recomendação NÃO definido — força negociação de escopo entre PM, devs e QA antes de estimar ou executar.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.106Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.927Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.542Z"
+        },
+        {
+          "sprint": 4,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.544Z"
+        },
+        {
+          "sprint": 4,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:32:39.639Z"
+        }
+      ]
+    },
+    {
+      "id": "T4.2",
+      "title": "Implementar motor de recomendação",
+      "dependsOn": [
+        "T4.1"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.106Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.927Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.542Z"
+        },
+        {
+          "sprint": 4,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.544Z"
+        },
+        {
+          "sprint": 4,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:32:39.639Z"
+        }
+      ]
+    },
+    {
+      "id": "T4.3",
+      "title": "Endpoint de recomendações",
+      "dependsOn": [
+        "T4.2"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.106Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.928Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.542Z"
+        },
+        {
+          "sprint": 4,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.544Z"
+        },
+        {
+          "sprint": 4,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:32:39.639Z"
+        }
+      ]
+    },
+    {
+      "id": "T5.1",
+      "title": "Agregação de dados de acervo e empréstimos",
+      "dependsOn": [
+        "T1.1",
+        "T3.2"
+      ],
+      "note": "Dupla dependência (acervo + empréstimos) — cria pressão de cronograma na sprint final.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.106Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.928Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.929Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.542Z"
+        },
+        {
+          "sprint": 4,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.544Z"
+        },
+        {
+          "sprint": 4,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:32:39.639Z"
+        }
+      ]
+    },
+    {
+      "id": "T5.2",
+      "title": "Geração do relatório mensal",
+      "dependsOn": [
+        "T5.1"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.106Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.928Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.930Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.542Z"
+        },
+        {
+          "sprint": 4,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.544Z"
+        },
+        {
+          "sprint": 4,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:32:39.639Z"
+        }
+      ]
+    },
+    {
+      "id": "T5.3",
+      "title": "Exportação e visualização do relatório",
+      "dependsOn": [
+        "T5.2"
+      ],
+      "note": "Risco plantado: mês sem dados deve gerar relatório vazio coerente, não erro — caso de borda.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.106Z"
+        },
+        {
+          "sprint": 2,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:13:15.108Z"
+        },
+        {
+          "sprint": 2,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.928Z"
+        },
+        {
+          "sprint": 3,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:15:40.930Z"
+        },
+        {
+          "sprint": 3,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.542Z"
+        },
+        {
+          "sprint": 4,
+          "from": "CARRIED_OVER",
+          "to": "PLANNED",
+          "by": "system",
+          "ts": "2026-06-16T23:29:40.544Z"
+        },
+        {
+          "sprint": 4,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-16T23:32:39.639Z"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "sprint": 1,
+      "by": "pm",
+      "content": "DECISÃO DE ESCOPO — Sprint 1:\n\nEscopo fechado com as seguintes tarefas:\n✅ T1.1 — Modelar schema de livros (prioridade máxima, bloqueante)\n✅ T1.2 — CRUD de cadastro de livro\n✅ T1.3 — Validação de entrada (ISBN único, campos obrigatórios)\n✅ T1.4 — Listagem de livros com paginação\n\nRegras de execução desta sprint:\n1. T1.1 começa imediatamente e nada mais começa antes de T1.1 estar concluída.\n2. T1.2 e T1.4 podem ser desenvolvidas em paralelo após T1.1.\n3. T1.3 só inicia após T1.2 aprovada.\n4. Estimativas serão consolidadas após retorno de Bruno e Carla — atribuições formais na sequência.\n\nAguardando estimativas para fechar o planning.",
+      "refs": [
+        "T1.1",
+        "T1.2",
+        "T1.3",
+        "T1.4"
+      ],
+      "ts": "2026-06-16T23:01:16.532Z"
+    },
+    {
+      "id": "D2",
+      "sprint": 1,
+      "by": "pm",
+      "content": "Escopo de T1.3 definido — registrando como decisão para evitar ambiguidade no desenvolvimento e no review:\n\n1. **ISBN-13 como padrão principal**: T1.3 valida ISBN-13 (13 dígitos numéricos). ISBN-10 não é escopo desta sprint — fica como melhoria futura se o produto evoluir.\n\n2. **Normalização de hífens**: a aplicação aceita ISBN com ou sem hífens (ex: '978-3-16-148410-0' é entrada válida), mas normaliza removendo hífens antes de persistir. O banco armazena sempre só dígitos. Isso é mais amigável ao usuário e evita duplicatas por formatação diferente.\n\n3. **Validação de comprimento**: após normalização, ISBN deve ter exatamente 13 dígitos. Comprimento diferente → 422.\n\n4. **Validação de checksum (dígito verificador)**: obrigatória. ISBN-13 usa algoritmo de soma ponderada (pesos alternados 1 e 3). ISBN com checksum inválido → 422 com mensagem clara. Isso não é opcional — é o critério de maior risco da tarefa.\n\n5. **Unicidade**: já garantida no banco (T1.1) e na camada de serviço (T1.2). T1.3 reforça na validação de entrada, antes de qualquer acesso ao banco.\n\nEssas decisões valem para implementação (Carla) e para critérios de review (Diego).",
+      "refs": [
+        "T1.3"
+      ],
+      "ts": "2026-06-16T23:10:01.462Z"
+    },
+    {
+      "id": "D3",
+      "sprint": 2,
+      "by": "pm",
+      "content": "DECISÃO DE ESCOPO — Sprint 2\n\nEscopo comprometido (sujeito a ajuste após estimativas):\n✅ T2.1 — Cliente HTTP para API externa [PRIORIDADE MÁXIMA — desbloqueia toda a sprint]\n✅ T2.2 — Preenchimento automático por ISBN\n✅ T2.3 — Tratamento de falha/timeout [RISCO — critério de aceitação a ser confirmado por Diego]\n⚠️ T2.4 — Cache local de metadados [CONDICIONAL — entra na sprint se estimativas permitirem; caso contrário, move para Sprint 3]\n\nRegras de dependência em vigor:\n• T2.2 e T2.3 só iniciam após T2.1 estar minimamente funcional\n• T2.4 só inicia após T2.2 estar pronta\n\nRisco registrado: API de terceiros instável. T2.3 não é opcional — qualquer entrega que não contemple fallback será rejeitada na Review.\n\nPróximos passos: coletar estimativas de Bruno e Carla, alinhar critério de aceitação de T2.3 com Diego, e fechar atribuições.",
+      "refs": [
+        "T2.1",
+        "T2.2",
+        "T2.3",
+        "T2.4"
+      ],
+      "ts": "2026-06-16T23:13:57.194Z"
+    },
+    {
+      "id": "D4",
+      "sprint": 2,
+      "by": "pm",
+      "content": "Decisão técnica Sprint 2: O cliente HTTP (T2.1) deve ser implementado com interface explícita para configuração de timeout e mecanismo de fallback, antecipando os requisitos de T2.3. Isso não é gold-plating — é necessário para que T2.3 não exija refatoração do cliente. A interface de erro deve ser tipada e documentada antes de T2.1 ir para review.",
+      "refs": [
+        "T2.1",
+        "T2.3"
+      ],
+      "ts": "2026-06-16T23:14:21.679Z"
+    },
+    {
+      "id": "D5",
+      "sprint": 3,
+      "by": "pm",
+      "content": "DECISÃO DE ESCOPO — Sprint 3:\n\nAs quatro tarefas abaixo estão confirmadas no escopo desta sprint:\n• T3.1 — Modelar entidade de empréstimo\n• T3.2 — Registrar empréstimo (inclui obrigatoriamente: bloqueio de empréstimo duplicado)\n• T3.3 — Registrar devolução\n• T3.4 — Histórico de empréstimos por livro e por amigo\n\nCritério de aceite mínimo para T3.2: tentativa de emprestar livro com status 'emprestado' deve retornar erro claro, sem criar registro duplicado.\n\nEstimativas de esforço serão coletadas de Bruno e Carla antes de fechar a distribuição de tarefas. Aguardo retorno ainda neste planning.",
+      "refs": [
+        "T3.1",
+        "T3.2",
+        "T3.3",
+        "T3.4"
+      ],
+      "ts": "2026-06-16T23:16:15.860Z"
+    },
+    {
+      "id": "D6",
+      "sprint": 3,
+      "by": "pm",
+      "content": "DECISÃO — Entidade de amigos (T3.1): Aprovada a opção (b). A tabela `amigos` (id UUID PK, nome NOT NULL, contato) será criada como parte do schema desta sprint, com FK em `emprestimos.amigo_id`. Argumentos decisivos: rastreabilidade em T3.4, eliminação de duplicatas por string, e validação de existência em T3.2. A hora extra agora evita retrabalho garantido depois. Bruno, inclua a tabela `amigos` no schema de T3.1.",
+      "refs": [
+        "T3.1",
+        "T3.4"
+      ],
+      "ts": "2026-06-16T23:18:27.022Z"
+    },
+    {
+      "id": "D7",
+      "sprint": 3,
+      "by": "pm",
+      "content": "DECISÃO — Status ATRASADO (T3.1/T3.2): O campo `status` na tabela `emprestimos` terá ENUM('EMPRESTADO', 'DEVOLVIDO') apenas. O estado ATRASADO será calculado na camada de aplicação: livro com status='EMPRESTADO' e data_devolucao_prevista < NOW() é considerado atrasado. Nenhum job assíncrono será necessário nesta sprint. Isso elimina risco de inconsistência entre banco e realidade. Bruno, documente esse comportamento no schema. Diego, isso endereça seu ponto — a lógica de atraso é determinística e testável via data_devolucao_prevista.",
+      "refs": [
+        "T3.1",
+        "T3.2"
+      ],
+      "ts": "2026-06-16T23:18:27.023Z"
+    },
+    {
+      "id": "D8",
+      "sprint": 3,
+      "by": "pm",
+      "content": "DECISÃO — Validação de data_devolucao_prevista (T3.2): O sistema deve REJEITAR empréstimos com data_devolucao_prevista no passado (ou igual a NOW()). Regra: data_devolucao_prevista > NOW() no momento do registro — erro 400 com mensagem clara ('data de devolução prevista deve ser futura').\n\nRacional: evita dados inconsistentes (empréstimos que nascem atrasados), protege contra erro de digitação, e mantém a semântica do campo íntegra. Registro retroativo de empréstimos não é um requisito desta sprint — se surgir no futuro, tratamos como feature separada com fluxo próprio.\n\nCarla, isso vira um critério de validação em T3.2. Diego, isso endereça seu ponto 5 — rejeita, com 400.",
+      "refs": [
+        "T3.2"
+      ],
+      "ts": "2026-06-16T23:20:17.814Z"
+    },
+    {
+      "id": "D9",
+      "sprint": 3,
+      "by": "pm",
+      "content": "DECISÃO — T3.4 Histórico de empréstimos: sem paginação nesta sprint (opção a). Lista completa filtrada por livro_id ou amigo_id, retorno direto. Racional: contexto de biblioteca pessoal tem volume baixo; índices em livro_id e amigo_id garantem performance adequada; paginação pode ser adicionada depois sem quebrar contrato. Se o volume crescer, tratamos como melhoria incremental. Bruno, pode incorporar isso no esboço de T3.4. Diego, confirma que 'lista vazia = array vazio, não erro' continua sendo o critério — sem mudança aí.",
+      "refs": [
+        "T3.4"
+      ],
+      "ts": "2026-06-16T23:21:59.683Z"
+    },
+    {
+      "id": "D10",
+      "sprint": 3,
+      "by": "pm",
+      "content": "DECISÃO — T3.3 código de status para devolução de empréstimo já devolvido: 409 Conflict. Racional: o estado atual do recurso (status='DEVOLVIDO') conflita com a operação solicitada — semântica idêntica ao 409 que usamos em T3.2 para livro já emprestado. Mantém consistência na API. Bruno, isso fecha o ponto de atenção que você levantou no esboço. Diego, 409 entra nos seus critérios de aceitação para T3.3.",
+      "refs": [
+        "T3.3"
+      ],
+      "ts": "2026-06-16T23:21:59.683Z"
+    },
+    {
+      "id": "D11",
+      "sprint": 3,
+      "by": "pm",
+      "content": "DECISÃO — Correção de race condition em T3.2: adotar a opção (b) do Diego — unique partial index no banco: `CREATE UNIQUE INDEX idx_emprestimo_ativo ON emprestimos(livro_id) WHERE status = 'EMPRESTADO'`. O banco rejeita o segundo INSERT com violação de unicidade, e a camada de aplicação captura esse erro e retorna 409 'livro já está emprestado'.\n\nRacional: a garantia fica no banco (fonte de verdade), não depende de todos os caminhos de código usarem transação corretamente, e é mais simples de testar. A Carla já tem o tratamento de erro de FK na camada de aplicação — o mesmo padrão se aplica aqui.\n\nEfeito colateral positivo para T3.1: esse índice complementa o schema existente sem alterar o DDL das tabelas — é uma adição, não uma mudança estrutural. Bruno, não há impacto em T3.1 aprovado.",
+      "refs": [
+        "T3.2",
+        "T3.1"
+      ],
+      "ts": "2026-06-16T23:24:00.355Z"
+    },
+    {
+      "id": "D12",
+      "sprint": 3,
+      "by": "pm",
+      "content": "DECISÃO — T3.4 Histórico de empréstimos: endpoint único com query params opcionais. Exemplo: `GET /emprestimos?livro_id=X` ou `GET /emprestimos?amigo_id=Y`. Sem filtro → retorna todo o histórico. Filtros combinados (livro_id + amigo_id simultaneamente) são aceitos se ambos forem informados — retorna interseção.\n\nRacional: menos duplicação de lógica, mais flexível, atende o critério do Diego de 'filtra por livro e por amigo separadamente' sem endpoints distintos. Bruno, pode incorporar no esboço de T3.4.",
+      "refs": [
+        "T3.4"
+      ],
+      "ts": "2026-06-16T23:24:00.356Z"
+    },
+    {
+      "id": "D13",
+      "sprint": 4,
+      "by": "pm",
+      "content": "DECISÃO DE ESCOPO — Sprint 4, Planning, Turno 1:\n\nFica registrado que **nenhuma estimativa para T4.2 e T4.3 será fechada antes da resolução de T4.1**. O critério de recomendação é um pré-requisito de escopo, não apenas técnico.\n\nAs três opções em avaliação são:\n• Opção A: similaridade por gênero/autor\n• Opção B: histórico de empréstimos\n• Opção C: tags manuais do usuário\n\nA decisão final será tomada com base no input de Bruno (viabilidade técnica), Carla (esforço de implementação) e Diego (testabilidade e critérios de aceite). Prazo para posicionamento: ainda neste turno de planning.\n\nQualquer critério escolhido deve ser documentado como parte da entrega de T4.1 — não aceito T4.1 como 'done' sem um documento mínimo de definição que sirva de base para T4.2 e para os critérios de aceite do Diego.",
+      "refs": [
+        "T4.1",
+        "T4.2",
+        "T4.3"
+      ],
+      "ts": "2026-06-16T23:30:26.312Z"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "B1",
+      "sprint": 2,
+      "by": "dev1",
+      "taskId": "T2.1",
+      "content": "Bloqueio parcial em T2.3 que impacta o design de T2.1 agora.\n\nA nota de T2.3 diz 'exige fallback definido', mas o comportamento do fallback não está especificado. Preciso saber qual é a expectativa antes de finalizar T2.1, porque a interface `FallbackHandler` que vou plugar no cliente depende disso:\n\n**Opção A — Falha silenciosa com dados parciais:** retorna `null`/vazio e deixa o usuário preencher manualmente. Simples, sem dependência de estado.\n\n**Opção B — Fallback para cache:** retorna metadados do cache local se disponível (T2.4). Cria dependência entre T2.3 e T2.4 — precisa ser modelado no cliente agora.\n\n**Opção C — Erro explícito com mensagem amigável:** propaga o `ApiError` tipado para a UI exibir mensagem e permitir retry manual. Mais honesto com o usuário.\n\nMinha recomendação técnica é Opção C como comportamento padrão, com Opção B como enhancement depois que T2.4 estiver pronto. Isso evita acoplamento prematuro.\n\nSe não houver decisão antes de eu fechar T2.1, vou implementar Opção C e deixar a interface extensível para B — mas prefiro confirmação explícita para não criar expectativa errada com a Carla e o Diego.",
+      "openedAt": "2026-06-16T23:14:54.028Z",
+      "resolvedAt": null,
+      "resolvedBy": null
+    },
+    {
+      "id": "B2",
+      "sprint": 4,
+      "by": "dev1",
+      "taskId": "T4.1",
+      "content": "Bloqueador ativo: T4.2 e T4.3 NÃO podem ser iniciadas enquanto T4.1 não tiver critério formal aprovado pelo time. Já vi esse padrão antes — alguém começa a implementar com critério 'assumido' e na review o Diego rejeita porque o comportamento de borda não estava especificado. Resultado: retrabalho de arquitetura no final da sprint.\n\nCondiçoes para desbloquear T4.2:\n1. Critério formal documentado em T4.1 (autor primário + fallback gênero, ou outra decisão do time).\n2. Diego confirmar que os casos de borda são testáveis.\n3. Helena fechar o escopo com DECISION.\n\nEnquanto isso, não faço CLAIM_TASK em nada de Sprint 4.",
+      "openedAt": "2026-06-16T23:31:37.482Z",
+      "resolvedAt": null,
+      "resolvedBy": null
+    }
+  ]
+}

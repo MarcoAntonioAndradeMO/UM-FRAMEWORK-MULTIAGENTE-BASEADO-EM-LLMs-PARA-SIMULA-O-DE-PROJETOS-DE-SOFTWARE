@@ -1,0 +1,88 @@
+{
+  "generatedAt": "2026-05-25T14:17:00.375Z",
+  "currentSprint": 1,
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "Cadastro e listagem de livros",
+      "dependsOn": [],
+      "note": "Base de tudo — nenhuma outra tarefa pode ser iniciada sem T1 concluída.",
+      "status": "PLANNED",
+      "estimate": null,
+      "estimates": [],
+      "assignee": "dev1",
+      "sprintIntroduced": 1,
+      "history": []
+    },
+    {
+      "id": "T2",
+      "title": "Integração com API externa de metadados",
+      "dependsOn": [
+        "T1"
+      ],
+      "note": "Risco plantado: API de terceiros pode ficar instável ou indisponível durante a sprint.",
+      "status": "PLANNED",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": []
+    },
+    {
+      "id": "T3",
+      "title": "Empréstimo a amigos",
+      "dependsOn": [
+        "T1"
+      ],
+      "note": null,
+      "status": "PLANNED",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": []
+    },
+    {
+      "id": "T4",
+      "title": "Sistema de recomendações",
+      "dependsOn": [
+        "T1"
+      ],
+      "note": "Ambíguo de propósito: critério de recomendação não foi definido — força negociação de escopo.",
+      "status": "PLANNED",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": []
+    },
+    {
+      "id": "T5",
+      "title": "Relatório mensal",
+      "dependsOn": [
+        "T1",
+        "T3"
+      ],
+      "note": "Dupla dependência — cria pressão de cronograma na sprint final.",
+      "status": "PLANNED",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": []
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "sprint": 1,
+      "by": "pm",
+      "content": "Decisão final: T1 tem estimativa de 4 dias. Bruno lidera, Carla suporta. Entrega incremental ao final do dia 4.",
+      "refs": [
+        "T1"
+      ],
+      "ts": "2026-05-25T14:17:00.375Z"
+    }
+  ],
+  "blockers": []
+}

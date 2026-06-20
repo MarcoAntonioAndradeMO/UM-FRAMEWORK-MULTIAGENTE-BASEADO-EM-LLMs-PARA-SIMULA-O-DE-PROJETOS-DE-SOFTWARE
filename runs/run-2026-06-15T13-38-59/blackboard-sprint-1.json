@@ -1,0 +1,514 @@
+{
+  "generatedAt": "2026-06-15T13:42:48.173Z",
+  "currentSprint": 1,
+  "tasks": [
+    {
+      "id": "T1.1",
+      "title": "Modelar schema de livros",
+      "dependsOn": [],
+      "note": "Fundação da Sprint 1 — nenhuma outra tarefa de cadastro pode começar antes disto.",
+      "status": "CARRIED_OVER",
+      "estimate": 2,
+      "estimates": [
+        {
+          "by": "dev1",
+          "value": 5,
+          "sprint": 1,
+          "ts": "2026-06-15T13:39:59.026Z"
+        },
+        {
+          "by": "dev2",
+          "value": 2,
+          "sprint": 1,
+          "ts": "2026-06-15T13:40:31.887Z"
+        }
+      ],
+      "assignee": "dev1",
+      "sprintIntroduced": 1,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.172Z"
+        }
+      ]
+    },
+    {
+      "id": "T1.2",
+      "title": "CRUD de cadastro de livro",
+      "dependsOn": [
+        "T1.1"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": 4,
+      "estimates": [
+        {
+          "by": "dev1",
+          "value": 8,
+          "sprint": 1,
+          "ts": "2026-06-15T13:39:59.027Z"
+        },
+        {
+          "by": "dev2",
+          "value": 4,
+          "sprint": 1,
+          "ts": "2026-06-15T13:40:31.888Z"
+        }
+      ],
+      "assignee": "dev2",
+      "sprintIntroduced": 1,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.172Z"
+        }
+      ]
+    },
+    {
+      "id": "T1.3",
+      "title": "Validação de entrada (ISBN único, campos obrigatórios)",
+      "dependsOn": [
+        "T1.2"
+      ],
+      "note": "Risco plantado: ISBN duplicado ou vazio deve ser rejeitado — caso de borda de qualidade.",
+      "status": "CARRIED_OVER",
+      "estimate": 3,
+      "estimates": [
+        {
+          "by": "dev1",
+          "value": 5,
+          "sprint": 1,
+          "ts": "2026-06-15T13:39:59.027Z"
+        },
+        {
+          "by": "dev2",
+          "value": 3,
+          "sprint": 1,
+          "ts": "2026-06-15T13:40:31.888Z"
+        }
+      ],
+      "assignee": "dev1",
+      "sprintIntroduced": 1,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.172Z"
+        }
+      ]
+    },
+    {
+      "id": "T1.4",
+      "title": "Listagem de livros com paginação",
+      "dependsOn": [
+        "T1.1"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": 2,
+      "estimates": [
+        {
+          "by": "dev1",
+          "value": 5,
+          "sprint": 1,
+          "ts": "2026-06-15T13:39:59.027Z"
+        },
+        {
+          "by": "dev2",
+          "value": 2,
+          "sprint": 1,
+          "ts": "2026-06-15T13:40:31.888Z"
+        }
+      ],
+      "assignee": "dev2",
+      "sprintIntroduced": 1,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.172Z"
+        }
+      ]
+    },
+    {
+      "id": "T2.1",
+      "title": "Cliente HTTP para API externa de metadados",
+      "dependsOn": [
+        "T1.1"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.172Z"
+        }
+      ]
+    },
+    {
+      "id": "T2.2",
+      "title": "Preenchimento automático de metadados por ISBN",
+      "dependsOn": [
+        "T2.1"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.172Z"
+        }
+      ]
+    },
+    {
+      "id": "T2.3",
+      "title": "Tratamento de falha/timeout da API externa",
+      "dependsOn": [
+        "T2.1"
+      ],
+      "note": "Risco plantado: API de terceiros pode ficar instável ou indisponível — exige fallback definido.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.172Z"
+        }
+      ]
+    },
+    {
+      "id": "T2.4",
+      "title": "Cache local de metadados",
+      "dependsOn": [
+        "T2.2"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.172Z"
+        }
+      ]
+    },
+    {
+      "id": "T3.1",
+      "title": "Modelar entidade de empréstimo",
+      "dependsOn": [
+        "T1.2"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.173Z"
+        }
+      ]
+    },
+    {
+      "id": "T3.2",
+      "title": "Registrar empréstimo",
+      "dependsOn": [
+        "T3.1"
+      ],
+      "note": "Risco plantado: emprestar um livro já emprestado deve ser impedido — caso de borda.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.173Z"
+        }
+      ]
+    },
+    {
+      "id": "T3.3",
+      "title": "Registrar devolução",
+      "dependsOn": [
+        "T3.2"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.173Z"
+        }
+      ]
+    },
+    {
+      "id": "T3.4",
+      "title": "Histórico de empréstimos por livro e por amigo",
+      "dependsOn": [
+        "T3.2"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.173Z"
+        }
+      ]
+    },
+    {
+      "id": "T4.1",
+      "title": "Definir critério de recomendação",
+      "dependsOn": [],
+      "note": "Risco plantado: critério de recomendação NÃO definido — força negociação de escopo entre PM, devs e QA antes de estimar ou executar.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.173Z"
+        }
+      ]
+    },
+    {
+      "id": "T4.2",
+      "title": "Implementar motor de recomendação",
+      "dependsOn": [
+        "T4.1"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.173Z"
+        }
+      ]
+    },
+    {
+      "id": "T4.3",
+      "title": "Endpoint de recomendações",
+      "dependsOn": [
+        "T4.2"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.173Z"
+        }
+      ]
+    },
+    {
+      "id": "T5.1",
+      "title": "Agregação de dados de acervo e empréstimos",
+      "dependsOn": [
+        "T1.1",
+        "T3.2"
+      ],
+      "note": "Dupla dependência (acervo + empréstimos) — cria pressão de cronograma na sprint final.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.173Z"
+        }
+      ]
+    },
+    {
+      "id": "T5.2",
+      "title": "Geração do relatório mensal",
+      "dependsOn": [
+        "T5.1"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.173Z"
+        }
+      ]
+    },
+    {
+      "id": "T5.3",
+      "title": "Exportação e visualização do relatório",
+      "dependsOn": [
+        "T5.2"
+      ],
+      "note": "Risco plantado: mês sem dados deve gerar relatório vazio coerente, não erro — caso de borda.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "estimates": [],
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-06-15T13:42:48.173Z"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "sprint": 1,
+      "by": "pm",
+      "content": "Bom, temos material suficiente para fechar as questões em aberto. Vou bater o martelo agora nos três pontos técnicos que estavam bloqueando — não vamos entrar em implementação sem isso definido.\n\n**1. Formatos de ISBN aceitos (afeta T1.1 e T1.3)**\nAceitamos ISBN-10 e ISBN-13. Na camada de serviço, normalizamos a entrada removendo hífens e espaços antes de validar e armazenar. O banco armazena sempre dígitos puros. Isso resolve o problema de '978-3-16-148410-0' e '9783161484100' serem tratados como livros diferentes.\n\n**2. Deleção de livros (afeta T1.2)**\nHard-delete por ora. O ISBN fica disponível para reutilização imediata após exclusão. Soft-delete é uma decisão que revisitamos na Sprint 3 quando modelarmos empréstimos — não vamos adicionar complexidade agora sem necessidade confirmada.\n\n**3. Paginação (afeta T1.4)**\nTamanho de página padrão: 20. Máximo aceito: 100. Mínimo: 1. Parâmetros fora desse range retornam HTTP 400 com mensagem clara. Page mínimo: 1. Page além do total de páginas retorna lista vazia com metadados corretos — não erro.",
+      "refs": [
+        "T1.1",
+        "T1.2",
+        "T1.3",
+        "T1.4"
+      ],
+      "ts": "2026-06-15T13:42:16.235Z"
+    },
+    {
+      "id": "D2",
+      "sprint": 1,
+      "by": "pm",
+      "content": "Critérios de aceite consolidados — estes são os critérios que o Diego vai usar no Review. Não tem negociação no meio da sprint.\n\n**T1.3 — Validação de entrada:**\n(1) ISBN duplicado rejeitado com mensagem de erro explícita\n(2) ISBN vazio ou nulo rejeitado\n(3) Campos obrigatórios ausentes retornam validação com campo identificado\n(4) ISBN malformado rejeitado (ex: '1234', 'ABCXYZ', string aleatória)\n(5) Normalização aplicada antes da validação — hífens e espaços removidos na entrada\n(6) Validação de unicidade aplicada tanto no CREATE quanto no UPDATE\n\n**T1.4 — Listagem com paginação:**\n(1) Acervo vazio retorna lista vazia com metadados zerados (total=0) — não 404, não 500\n(2) Parâmetros inválidos (page<1, size<1, size>100) retornam HTTP 400 com mensagem clara\n(3) Page além do total de páginas retorna lista vazia com metadados corretos\n\nDiego, esses critérios cobrem o que você levantou. Se tiver algum ajuste de última hora, fala agora — depois do planning fechado, qualquer adição vira item de backlog para a próxima sprint.",
+      "refs": [
+        "T1.3",
+        "T1.4"
+      ],
+      "ts": "2026-06-15T13:42:16.235Z"
+    },
+    {
+      "id": "D3",
+      "sprint": 1,
+      "by": "pm",
+      "content": "Fechando as estimativas e o escopo da Sprint 1.\n\nSobre a discrepância entre Bruno e Carla: Diego levantou um ponto justo. Com os critérios de aceite que acabamos de fechar — especialmente os 6 critérios de T1.3 e a exigência de migração versionada + testes unitários em T1.1 — as estimativas mais altas do Bruno ficam justificadas nas tarefas de risco. Vou adotar o seguinte:\n\n| Tarefa | Estimativa | Justificativa |\n|--------|-----------|---------------|\n| T1.1   | 5 pts     | Migração versionada + testes unitários do modelo são critério de aceite |\n| T1.2   | 6 pts     | CRUD completo com testes de integração; hard-delete definido |\n| T1.3   | 5 pts     | 6 critérios de aceite, normalização + dupla constraint (banco + serviço) |\n| T1.4   | 3 pts     | Paginação com 3 critérios de borda definidos |\n| **Total** | **19 pts** | |\n\nCarla, sei que suas estimativas eram menores — e em outro contexto poderiam estar certas. Mas com esse nível de critério de aceite, especialmente em T1.3, subestimar vai gerar retrabalho no Review. Prefiro sprint com velocidade realista a sprint que termina com rejeição do Diego.\n\nEscopo da Sprint 1 está fechado. Partimos.",
+      "refs": [
+        "T1.1",
+        "T1.2",
+        "T1.3",
+        "T1.4"
+      ],
+      "ts": "2026-06-15T13:42:16.235Z"
+    },
+    {
+      "id": "D4",
+      "sprint": 1,
+      "by": "pm",
+      "content": "Bom, Bruno levantou pontos válidos e eu preciso desbloqueá-los agora. Aqui estão as decisões oficiais para esta sprint — não voltamos a discutir isso no meio da implementação:\n\n**D1 — ISBN-10 e ISBN-13:** Suportamos AMBOS. Armazenamos como string no banco. A validação de formato detecta o tipo pelo comprimento (10 ou 13 dígitos) e aplica o algoritmo correto para cada. ISBN vazio ou formato inválido é rejeitado.\n\n**D2 — Unicidade de ISBN:** Dois níveis obrigatórios: (a) UNIQUE constraint no banco de dados, e (b) validação na camada de serviço com mensagem de erro legível ao usuário. Bruno está certo — erro de constraint de banco não pode chegar cru no frontend.\n\n**D3 — Paginação:** Tamanho padrão = 20 itens. Máximo aceito = 100 itens. Requisição com valor acima de 100 retorna erro 400. Esses números são fixos para a sprint — não inventem valores diferentes.\n\nEssas decisões valem para T1.1, T1.3 e T1.4. Registradas aqui, não precisam de mais discussão.",
+      "refs": [
+        "T1.1",
+        "T1.3",
+        "T1.4"
+      ],
+      "ts": "2026-06-15T13:42:48.170Z"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "B1",
+      "sprint": 1,
+      "by": "dev1",
+      "taskId": "T1.1",
+      "content": "Antes de fecharmos o planning, quero registrar três pontos que precisam de decisão agora — não no meio da implementação:\n\n1. **ISBN-10 vs ISBN-13 (afeta T1.1 e T1.3):** Vamos suportar ambos os formatos? A validação de formato é diferente para cada um. Se não definirmos agora, T1.3 vai ser implementada no escuro.\n\n2. **Constraint de unicidade (T1.1 + T1.3):** Recomendo que a unicidade de ISBN seja garantida em dois níveis — constraint no banco E validação na camada de serviço. O banco garante integridade; a camada de serviço garante mensagem de erro amigável ao usuário. Se deixarmos só no banco, o erro que chega pro frontend é um stack trace feio.\n\n3. **Paginação (T1.4):** Precisamos definir tamanho de página padrão e máximo aceito antes de implementar. Sugiro padrão 20, máximo 100. Sem isso, cada um vai implementar um número diferente.",
+      "openedAt": "2026-06-15T13:39:59.027Z",
+      "resolvedAt": null,
+      "resolvedBy": null
+    }
+  ]
+}

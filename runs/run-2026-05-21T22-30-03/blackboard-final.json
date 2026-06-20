@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-05-21T22:30:03.489Z",
+  "sprint": 1,
+  "backlog": [
+    {
+      "id": "T1",
+      "title": "Cadastro e listagem de livros",
+      "status": "planned",
+      "estimate": 4,
+      "deps": []
+    },
+    {
+      "id": "T2",
+      "title": "Integração com API de metadados",
+      "status": "backlog",
+      "estimate": null,
+      "deps": [
+        "T1"
+      ]
+    },
+    {
+      "id": "T3",
+      "title": "Empréstimo a amigos",
+      "status": "backlog",
+      "estimate": null,
+      "deps": [
+        "T1"
+      ]
+    },
+    {
+      "id": "T4",
+      "title": "Sistema de recomendações",
+      "status": "backlog",
+      "estimate": null,
+      "deps": [
+        "T1"
+      ]
+    },
+    {
+      "id": "T5",
+      "title": "Relatório mensal",
+      "status": "backlog",
+      "estimate": null,
+      "deps": [
+        "T1",
+        "T3"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "turn": 3,
+      "actor": "pm",
+      "subject": "Estimativa de T1",
+      "resolution": "Fechado em 4 dias"
+    }
+  ],
+  "blockers": [],
+  "carryOver": []
+}

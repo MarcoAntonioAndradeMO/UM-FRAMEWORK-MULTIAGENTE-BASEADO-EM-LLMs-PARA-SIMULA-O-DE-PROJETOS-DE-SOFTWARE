@@ -1,0 +1,148 @@
+{
+  "generatedAt": "2026-05-22T15:54:27.904Z",
+  "currentSprint": 1,
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "Cadastro e listagem de livros",
+      "dependsOn": [],
+      "note": "Base de tudo — nenhuma outra tarefa pode ser iniciada sem T1 concluída.",
+      "status": "DONE",
+      "estimate": 4,
+      "assignee": "dev1",
+      "sprintIntroduced": 1,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "IN_PROGRESS",
+          "by": "dev1",
+          "ts": "2026-05-22T15:54:27.903Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "by": "dev1",
+          "ts": "2026-05-22T15:54:27.903Z"
+        },
+        {
+          "sprint": 1,
+          "from": "IN_REVIEW",
+          "to": "DONE",
+          "by": "qa",
+          "ts": "2026-05-22T15:54:27.903Z"
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "title": "Integração com API externa de metadados",
+      "dependsOn": [
+        "T1"
+      ],
+      "note": "Risco plantado: API de terceiros pode ficar instável ou indisponível durante a sprint.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-05-22T15:54:27.903Z"
+        }
+      ]
+    },
+    {
+      "id": "T3",
+      "title": "Empréstimo a amigos",
+      "dependsOn": [
+        "T1"
+      ],
+      "note": null,
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-05-22T15:54:27.903Z"
+        }
+      ]
+    },
+    {
+      "id": "T4",
+      "title": "Sistema de recomendações",
+      "dependsOn": [
+        "T1"
+      ],
+      "note": "Ambíguo de propósito: critério de recomendação não foi definido — força negociação de escopo.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-05-22T15:54:27.903Z"
+        }
+      ]
+    },
+    {
+      "id": "T5",
+      "title": "Relatório mensal",
+      "dependsOn": [
+        "T1",
+        "T3"
+      ],
+      "note": "Dupla dependência — cria pressão de cronograma na sprint final.",
+      "status": "CARRIED_OVER",
+      "estimate": null,
+      "assignee": null,
+      "sprintIntroduced": null,
+      "history": [
+        {
+          "sprint": 1,
+          "from": "PLANNED",
+          "to": "CARRIED_OVER",
+          "by": "system",
+          "ts": "2026-05-22T15:54:27.904Z"
+        }
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "sprint": 1,
+      "by": "pm",
+      "content": "Estimativa de T1 fechada em 4 dias — compromisso entre Bruno (5d) e Carla (3d). Bruno lidera.",
+      "refs": [
+        "T1"
+      ],
+      "ts": "2026-05-22T15:54:27.903Z"
+    }
+  ],
+  "blockers": [
+    {
+      "id": "B1",
+      "sprint": 1,
+      "by": "dev1",
+      "taskId": "T1",
+      "content": "Ambiente de banco de dados local não está acessível. Bloqueio temporário.",
+      "openedAt": "2026-05-22T15:54:27.903Z",
+      "resolvedAt": "2026-05-22T15:54:27.903Z",
+      "resolvedBy": "pm"
+    }
+  ]
+}
